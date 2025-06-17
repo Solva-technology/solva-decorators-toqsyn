@@ -5,8 +5,8 @@ def log(func):
     @wraps(func)
     def wrapper(*args, **kwargs):
         args_str = ", ".join(repr(arg) for arg in args)
-        print(f"Вызов: {add.__name__}({args_str})")
-        result = func(*args)
+        print(f"Вызов: {func.__name__}({args_str})")
+        result = func(*args, **kwargs)
         print("Результат: " + str(result))
         return result
 
@@ -15,4 +15,4 @@ def log(func):
 
 @log
 def add(a, b):
-    print(a + b)
+    return a + b
